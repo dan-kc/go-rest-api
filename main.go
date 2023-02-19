@@ -1,10 +1,9 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/dan-kc/go-rest-api/packages/initializers"
 	"github.com/dan-kc/go-rest-api/packages/controllers"
-	"os"
+	"github.com/dan-kc/go-rest-api/packages/initializers"
+	"github.com/gofiber/fiber/v2"
 )
 
 func init() {
@@ -19,13 +18,13 @@ func main() {
 	app := fiber.New()
 
 	// routes
-	app.Get("/post/:id", controllers.GetPost)
 	app.Get("/posts", controllers.GetAllPosts)
+	app.Get("/post/:id", controllers.GetPost)
 	app.Post("/post", controllers.CreatePost)
-  app.Put("/post/:id", controllers.UpdatePost)
-  app.Delete("/post/:id", controllers.DeletePost)
+	app.Put("/post/:id", controllers.UpdatePost)
+	app.Delete("/post/:id", controllers.DeletePost)
+	app.Get("/healthcheck", controllers.CheckHealth)
 
 	// start app
-	app.Listen(":" + os.Getenv("PORT"))
-
+	app.Listen(":3000")
 }

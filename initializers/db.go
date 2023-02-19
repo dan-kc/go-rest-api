@@ -5,7 +5,6 @@ import (
 	"github.com/dan-kc/go-rest-api/packages/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"os"
 )
 
 var DB *gorm.DB
@@ -14,7 +13,7 @@ func ConnectToDatabase() {
 
 	var err error
 
-	dsn := os.Getenv("DB_URL")
+	dsn := "host=db user=postgres password=password dbname=go-rest-api port=5432 sslmode=disable TimeZone=Asia/Shanghai"
 
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 

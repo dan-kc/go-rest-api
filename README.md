@@ -1,3 +1,3 @@
 ## To-do
-- Finish End to End tests
+- Finish intergration tests
 - Configure Tests such that they run when the container is spun up
